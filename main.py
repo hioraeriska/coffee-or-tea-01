@@ -24,6 +24,11 @@ def main() -> int:
         print(f"verification failed: entry.txt is {data!r}, expected b'A'",
               file=sys.stderr)
         return 1
+    if len(data) != 1 or data.decode("utf-8") != LETTER or data.isspace():
+        print(f"verification failed: entry.txt is {data!r}, "
+              "expected exactly one non-whitespace letter",
+              file=sys.stderr)
+        return 1
     return 0
 
 
